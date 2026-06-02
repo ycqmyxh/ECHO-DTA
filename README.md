@@ -11,10 +11,12 @@ MLP/
 ├── model.py           # Model components (GIN/GAT encoders, hypergraph interaction, DCI-DTA)
 ├── train.py           # Loss functions, evaluation metrics, training loop, main entry
 ├── requirements.txt   # Python dependencies
-└── CKNOpocket.py      # Original monolithic code (pre-split)
+
 ```
 
 ## Quick Start
+
+**Note:** Before running the model, you must first execute `Data/extract_Kiba.py` and `Data/extract_Davis.py` to generate the required `.pt` feature files.
 
 1. Install dependencies:
 ```bash
