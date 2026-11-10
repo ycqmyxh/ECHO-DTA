@@ -5,7 +5,7 @@ A deep learning model for drug-target affinity prediction, leveraging relational
 ## Project Structure
 
 ```
-MLP/
+ECHO-DTA/
 ├── config.py          # Environment configuration, hyperparameters, path constants
 ├── data_utils.py      # Data loading, molecular/protein graph construction, graph caching
 ├── model.py           # Model components (GIN/GAT encoders, hypergraph interaction, DCI-DTA)
