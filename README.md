@@ -1,4 +1,4 @@
-# DCI-DTA: Drug-Target Affinity Prediction
+# ECHO-DTA: Drug-Target Affinity Prediction
 
 A deep learning model for drug-target affinity prediction, leveraging relational graph neural networks, interaction-aware hypergraph encoding, and multi-scale sequence modeling.
 
