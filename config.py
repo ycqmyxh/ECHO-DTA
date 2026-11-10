@@ -1,12 +1,14 @@
-# config.py — 环境配置、常量定义与路径声明
+# -*- coding: utf-8 -*-
+
 import os
+os.environ['PYTORCH_CUDA_ALLOC_CONF'] = 'expandable_segments:True'
 import torch
 
-# ---------------------------
-# 1. 极致性能环境配置
+# 1. 环境配置
 # ---------------------------
 os.environ['PYTORCH_CUDA_ALLOC_CONF'] = 'expandable_segments:True'
 
+# [OPTIM] 开启 TF32
 torch.set_float32_matmul_precision('high')
 torch.backends.cuda.matmul.allow_tf32 = True
 torch.backends.cudnn.allow_tf32 = True
@@ -17,7 +19,7 @@ torch.backends.cudnn.benchmark = True
 # ---------------------------
 DATA_PATH = "Data/KIBA/"
 PLM_FEAT_PATH = os.path.join(DATA_PATH, "plm_features_SOTA", "plm_embeddings_sota_final.pt")
-CACHE_DIR = os.path.join(DATA_PATH, "cache_kiba_final_no_Pocket_and_Broadcast")
+CACHE_DIR = os.path.join(DATA_PATH, "cache_echo_main_correct_targets_v3")
 os.makedirs(CACHE_DIR, exist_ok=True)
 
 # 维度配置
@@ -31,20 +33,21 @@ GNN_HID = 512
 GNN_OUT = 512
 DROPOUT = 0.25
 
-BATCH_SIZE = 128
+
+BATCH_SIZE = 128 
 EPOCHS = 120
 PATIENCE = 12
 MAX_LR = 8e-5
 WEIGHT_DECAY = 1e-2
 
 ALPHA_MSE = 1.0
-ALPHA_RANK = 0.6
+ALPHA_RANK = 0.8  
 ALPHA_CL = 0.05
 
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 BINARY_THRESHOLD = 12.1
 
-# [OPTIM] 混合精度自动选择
+
 try:
     if torch.cuda.is_available() and torch.cuda.is_bf16_supported():
         AMP_TYPE = torch.bfloat16
@@ -59,3 +62,5 @@ except:
     USE_SCALER = True
 
 _SOFTMAX_NEG_INF = -1e4
+
+
